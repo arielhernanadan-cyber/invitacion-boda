@@ -10,11 +10,10 @@
         * { box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; text-align: center; color: var(--texto); margin: 0; padding: 0; background-color: var(--fondo-gris); }
 
-        /* FIX FOTO VERTICAL: Mantiene la proporción 3:4 sin cortes */
         .hero-image {
             width: 100%;
             aspect-ratio: 3 / 4; 
-            background-image: url('https://i.postimg.cc/d3Wj179Y/foto-casamiento2.jpg'); /* Reemplazá con tu foto */
+            background-image: url('https://i.postimg.cc/d3Wj179Y/foto-casamiento2.jpg'); 
             background-size: contain; 
             background-position: center top;
             background-repeat: no-repeat;
@@ -25,6 +24,14 @@
         h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin: 0; }
         .fecha-top { font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; font-size: 0.9rem; color: #999; }
         
+        /* Botón de control de música */
+        .music-control {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+            background: white; border: 1px solid var(--dorado); border-radius: 50%;
+            width: 45px; height: 45px; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+        }
+
         .contador-container { margin: 20px 0; }
         .contador-titulo { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); }
         .timer { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
@@ -51,10 +58,20 @@
     </style>
 </head>
 <body>
+
+<audio id="miMusica" loop preload="auto">
+    <source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" class="music-control">
+    <span id="musicIcon">🎵</span>
+</button>
+
 <div class="hero-image"></div>
 <div class="card">
     <h1>Ariel & Gisela</h1>
     <div class="fecha-top">13 de Marzo de 2026</div>
+    
     <div class="contador-container">
         <div class="contador-titulo">Faltan</div>
         <div class="timer">
@@ -64,6 +81,7 @@
             <div class="time-box"><span id="seconds">0</span><label>Segundos</label></div>
         </div>
     </div>
+
     <div class="info-boda">
         <div class="info-item">
             <span class="info-label">Ceremonia</span>
@@ -80,6 +98,7 @@
         <div class="info-item"><span class="info-label">Dress Code</span><span class="info-value">Elegante</span></div>
         <div class="info-item"><span class="info-label">Fecha del Evento</span><span class="info-value">13/03/2026</span></div>
     </div>
+
     <div class="confirmacion">
         <p><strong>Buscá tu nombre y confirmá:</strong></p>
         <div id="searchSection">
@@ -95,15 +114,47 @@
         </div>
         <p id="msg" style="font-weight: bold; color: var(--dorado);"></p>
     </div>
+
     <div class="regalos">
         <p><strong>Si desean hacernos un regalo:</strong></p>
         <div class="cbu-box">Santander Rio | CBU: 0720762688000001354490<br>Alias: <strong>ESPADA.PALETA.LASTRE</strong></div>
     </div>
     <div class="pie">Para esta ocasión tan especial, hemos decidido celebrar en un ambiente sólo para adultos. Gracias por acompañarnos.</div>
 </div>
+
 <script>
-    const WEB_APP_URL = "https://arielhernanadan-cyber.github.io/invitacion-boda/";
+    // URL CORREGIDA DEL SCRIPT
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwPeVsvaAG5mpS7P5Jql1pjLn69acwRpStjJLsOIyHr7KZUKFo7hZezlnzui9pd3qPXOA/exec";
     let nombreSeleccionado = "";
+
+    // --- LÓGICA DE MÚSICA (AUTOPLAY POR INTERACCIÓN) ---
+    const audio = document.getElementById("miMusica");
+    const musicBtn = document.getElementById("musicBtn");
+    const musicIcon = document.getElementById("musicIcon");
+
+    const playAudio = () => {
+        if (audio.paused) {
+            audio.play().then(() => {
+                musicIcon.innerText = "🔇";
+            }).catch(() => {});
+        }
+    };
+
+    // Detecta el primer click o toque en cualquier parte de la pantalla
+    ['click', 'touchstart', 'scroll'].forEach(event => {
+        document.addEventListener(event, playAudio, { once: true });
+    });
+
+    musicBtn.addEventListener("click", (e) => {
+        e.stopPropagation(); // Evita conflictos con el listener del documento
+        if (audio.paused) {
+            audio.play(); musicIcon.innerText = "🔇";
+        } else {
+            audio.pause(); musicIcon.innerText = "🎵";
+        }
+    });
+
+    // CONTADOR
     const target = new Date("March 13, 2026 12:00:00").getTime();
     setInterval(() => {
         const now = new Date().getTime();
@@ -113,6 +164,8 @@
         document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
     }, 1000);
+
+    // BÚSQUEDA Y CONFIRMACIÓN
     async function buscar() {
         const query = document.getElementById('guestSearch').value;
         if(query.length < 3) return;
@@ -137,6 +190,7 @@
             document.getElementById('msg').innerText = "";
         } catch(e) { document.getElementById('msg').innerText = "Error."; }
     }
+
     async function enviarRespuesta(opcion) {
         document.getElementById('msg').innerText = "Guardando...";
         try {
