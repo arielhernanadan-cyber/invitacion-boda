@@ -6,38 +6,22 @@
     <title>Invitación Ariel & Gisela</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --dorado: #b8926a;
-            --texto: #5a5a5a;
-            --fondo-gris: #f8f8f8;
-            --verde-exito: #76a071;
-            --rojo-error: #c06c6c;
-        }
+        :root { --dorado: #b8926a; --texto: #5a5a5a; --fondo-gris: #f8f8f8; --verde-exito: #76a071; --rojo-error: #c06c6c; }
         * { box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; text-align: center; color: var(--texto); margin: 0; padding: 0; background-color: var(--fondo-gris); }
 
-        /* FIX DE FOTO: Se adapta al alto real de tu imagen vertical */
+        /* FIX FOTO VERTICAL: Mantiene la proporción 3:4 sin cortes */
         .hero-image {
             width: 100%;
-            aspect-ratio: 3 / 4; /* Proporción estándar de foto vertical de celular */
-            background-image: url('TU_LINK_DE_POSTIMAGES_AQUÍ'); 
+            aspect-ratio: 3 / 4; 
+            background-image: url('https://i.postimg.cc/d3Wj179Y/foto-casamiento2.jpg'); /* Reemplazá con tu foto */
             background-size: contain; 
             background-position: center top;
             background-repeat: no-repeat;
             background-color: #fff;
         }
 
-        .card { 
-            background-color: #fff; 
-            max-width: 600px; 
-            margin: -40px auto 20px; 
-            padding: 40px 15px; 
-            border-radius: 30px 30px 0 0; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            position: relative;
-            z-index: 10;
-        }
-        
+        .card { background-color: #fff; max-width: 600px; margin: -40px auto 20px; padding: 40px 15px; border-radius: 30px 30px 0 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; z-index: 10; }
         h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin: 0; }
         .fecha-top { font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; font-size: 0.9rem; color: #999; }
         
@@ -53,7 +37,6 @@
         .info-label { display: block; font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); line-height: 1.2; }
         .info-value { display: block; font-weight: 600; font-size: 1.1rem; }
         .info-sub { display: block; font-size: 0.9rem; }
-        
         .map-link { display: inline-block; color: var(--dorado); text-decoration: none; font-size: 0.85rem; margin-top: 8px; border-bottom: 1px solid var(--dorado); font-weight: 600; }
 
         .confirmacion { border: 1px solid #e0c3a0; padding: 25px 15px; background: #fffdfb; }
@@ -61,32 +44,26 @@
         .btn-buscar { background: var(--dorado); color: white; }
         .btn-verde { background: var(--verde-exito); color: white; }
         .btn-rojo { background: var(--rojo-error); color: white; }
-
         .regalos { background: #fdfaf6; padding: 30px 20px; margin-top: 40px; }
         .cbu-box { background: white; border: 2px dashed var(--dorado); padding: 20px; font-size: 0.85rem; }
-        
         .pie { font-size: 0.95rem; margin: 40px 0; padding: 0 15px; }
         .hidden { display: none; }
     </style>
 </head>
 <body>
-
 <div class="hero-image"></div>
-
 <div class="card">
     <h1>Ariel & Gisela</h1>
     <div class="fecha-top">13 de Marzo de 2026</div>
-
     <div class="contador-container">
         <div class="contador-titulo">Faltan</div>
-        <div class="timer" id="timer">
+        <div class="timer">
             <div class="time-box"><span id="days">0</span><label>Días</label></div>
             <div class="time-box"><span id="hours">0</span><label>Horas</label></div>
             <div class="time-box"><span id="minutes">0</span><label>Minutos</label></div>
             <div class="time-box"><span id="seconds">0</span><label>Segundos</label></div>
         </div>
     </div>
-
     <div class="info-boda">
         <div class="info-item">
             <span class="info-label">Ceremonia</span>
@@ -103,7 +80,6 @@
         <div class="info-item"><span class="info-label">Dress Code</span><span class="info-value">Elegante</span></div>
         <div class="info-item"><span class="info-label">Fecha del Evento</span><span class="info-value">13/03/2026</span></div>
     </div>
-
     <div class="confirmacion">
         <p><strong>Buscá tu nombre y confirmá:</strong></p>
         <div id="searchSection">
@@ -119,23 +95,15 @@
         </div>
         <p id="msg" style="font-weight: bold; color: var(--dorado);"></p>
     </div>
-
     <div class="regalos">
         <p><strong>Si desean hacernos un regalo:</strong></p>
-        <div class="cbu-box">
-            Santander Rio | CBU: 0720762688000001354490<br>
-            Alias: <strong>ESPADA.PALETA.LASTRE</strong>
-        </div>
+        <div class="cbu-box">Santander Rio | CBU: 0720762688000001354490<br>Alias: <strong>ESPADA.PALETA.LASTRE</strong></div>
     </div>
-
     <div class="pie">Para esta ocasión tan especial, hemos decidido celebrar en un ambiente sólo para adultos. Gracias por acompañarnos.</div>
 </div>
-
 <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwPeVsvaAG5mpS7P5Jql1pjLn69acwRpStjJLsOIyHr7KZUKFo7hZezlnzui9pd3qPXOA/exec";
+    const WEB_APP_URL = "https://arielhernanadan-cyber.github.io/invitacion-boda/";
     let nombreSeleccionado = "";
-
-    // LÓGICA CONTADOR
     const target = new Date("March 13, 2026 12:00:00").getTime();
     setInterval(() => {
         const now = new Date().getTime();
@@ -145,7 +113,6 @@
         document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
     }, 1000);
-
     async function buscar() {
         const query = document.getElementById('guestSearch').value;
         if(query.length < 3) return;
@@ -170,7 +137,6 @@
             document.getElementById('msg').innerText = "";
         } catch(e) { document.getElementById('msg').innerText = "Error."; }
     }
-
     async function enviarRespuesta(opcion) {
         document.getElementById('msg').innerText = "Guardando...";
         try {
