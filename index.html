@@ -13,7 +13,7 @@
         .hero-image {
             width: 100%;
             aspect-ratio: 3 / 4; 
-            background-image: url('https://i.postimg.cc/J0RtnTGp/foto-casamiento3.jpg'); 
+            background-image: url('https://i.postimg.cc/d3Wj179Y/foto-casamiento2.jpg'); 
             background-size: contain; 
             background-position: center top;
             background-repeat: no-repeat;
@@ -24,7 +24,10 @@
         h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin: 0; }
         .fecha-top { font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; font-size: 0.9rem; color: #999; }
         
-        /* Botón de control de música */
+        /* Estilos para la sección de texto restaurada */
+        .seccion-texto { margin: 25px 0; padding: 0 10px; }
+        .historia { font-style: italic; color: #777; margin: 20px 0; font-size: 0.95rem; line-height: 1.6; }
+
         .music-control {
             position: fixed; bottom: 20px; right: 20px; z-index: 1000;
             background: white; border: 1px solid var(--dorado); border-radius: 50%;
@@ -82,6 +85,12 @@
         </div>
     </div>
 
+    <div class="seccion-texto">
+        <p>Tenemos el gusto de compartir con ustedes este momento tan importante para nuestras vidas.</p>
+        <div class="historia">"Nuestra historia comenzó hace 6 años. Un encuentro, muchas risas, viajes y la certeza de que el mejor destino es caminar la vida juntos."</div>
+        <p>Por eso, hoy elegimos dar un nuevo paso juntos.<br><strong>¡Nos casamos!</strong></p>
+    </div>
+
     <div class="info-boda">
         <div class="info-item">
             <span class="info-label">Ceremonia</span>
@@ -95,7 +104,9 @@
             <span class="info-sub">Horario: 13:00 | Dirección: Figueroa Alcorta 6402</span>
             <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">📍 Ver mapa</a>
         </div>
-        <div class="info-item"><span class="info-label">Dress Code</span><span class="info-value">Elegante</span></div>
+        <div class="info-item">
+            <span class="info-label">Dress Code</span>
+            <span class="info-value">Elegante-Sport</span> </div>
         <div class="info-item"><span class="info-label">Fecha del Evento</span><span class="info-value">13/03/2026</span></div>
     </div>
 
@@ -123,30 +134,31 @@
 </div>
 
 <script>
-    // URL CORREGIDA DEL SCRIPT
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwPeVsvaAG5mpS7P5Jql1pjLn69acwRpStjJLsOIyHr7KZUKFo7hZezlnzui9pd3qPXOA/exec";
     let nombreSeleccionado = "";
 
-    // --- LÓGICA DE MÚSICA (AUTOPLAY POR INTERACCIÓN) ---
     const audio = document.getElementById("miMusica");
     const musicBtn = document.getElementById("musicBtn");
     const musicIcon = document.getElementById("musicIcon");
 
     const playAudio = () => {
         if (audio.paused) {
+            // AJUSTE DE INICIO: Cambiá el 45 por el segundo que quieras
+            if (audio.currentTime === 0) {
+                audio.currentTime = 45; 
+            }
             audio.play().then(() => {
                 musicIcon.innerText = "🔇";
             }).catch(() => {});
         }
     };
 
-    // Detecta el primer click o toque en cualquier parte de la pantalla
     ['click', 'touchstart', 'scroll'].forEach(event => {
         document.addEventListener(event, playAudio, { once: true });
     });
 
     musicBtn.addEventListener("click", (e) => {
-        e.stopPropagation(); // Evita conflictos con el listener del documento
+        e.stopPropagation();
         if (audio.paused) {
             audio.play(); musicIcon.innerText = "🔇";
         } else {
@@ -154,7 +166,6 @@
         }
     });
 
-    // CONTADOR
     const target = new Date("March 13, 2026 12:00:00").getTime();
     setInterval(() => {
         const now = new Date().getTime();
@@ -165,7 +176,6 @@
         document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
     }, 1000);
 
-    // BÚSQUEDA Y CONFIRMACIÓN
     async function buscar() {
         const query = document.getElementById('guestSearch').value;
         if(query.length < 3) return;
