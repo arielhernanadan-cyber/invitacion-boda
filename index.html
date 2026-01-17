@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Invitación Ariel & Gisela</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dorado: #b8926a;
+            --texto: #5a5a5a;
+            --fondo-gris: #f8f8f8;
+            --verde-exito: #76a071;
+            --rojo-error: #c06c6c;
+        }
+        * { box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; text-align: center; color: var(--texto); margin: 0; padding: 0; background-color: var(--fondo-gris); }
+
+        /* FIX DE FOTO: Se adapta al alto real de tu imagen vertical */
+        .hero-image {
+            width: 100%;
+            aspect-ratio: 3 / 4; /* Proporción estándar de foto vertical de celular */
+            background-image: url('TU_LINK_DE_POSTIMAGES_AQUÍ'); 
+            background-size: contain; 
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-color: #fff;
+        }
+
+        .card { 
+            background-color: #fff; 
+            max-width: 600px; 
+            margin: -40px auto 20px; 
+            padding: 40px 15px; 
+            border-radius: 30px 30px 0 0; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+        }
+        
+        h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin: 0; }
+        .fecha-top { font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; font-size: 0.9rem; color: #999; }
+        
+        .contador-container { margin: 20px 0; }
+        .contador-titulo { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); }
+        .timer { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+        .time-box { background: #fff; border: 1px solid #f0e6db; padding: 10px; min-width: 70px; border-radius: 10px; }
+        .time-box span { display: block; font-size: 1.4rem; font-weight: 600; color: var(--dorado); }
+        .time-box label { font-size: 0.6rem; text-transform: uppercase; color: #999; }
+
+        .info-boda { margin: 35px 0; border-top: 1px solid #f2f2f2; border-bottom: 1px solid #f2f2f2; padding: 25px 10px; }
+        .info-item { margin-bottom: 30px; }
+        .info-label { display: block; font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); line-height: 1.2; }
+        .info-value { display: block; font-weight: 600; font-size: 1.1rem; }
+        .info-sub { display: block; font-size: 0.9rem; }
+        
+        .map-link { display: inline-block; color: var(--dorado); text-decoration: none; font-size: 0.85rem; margin-top: 8px; border-bottom: 1px solid var(--dorado); font-weight: 600; }
+
+        .confirmacion { border: 1px solid #e0c3a0; padding: 25px 15px; background: #fffdfb; }
+        button { width: 100%; border: none; padding: 16px; cursor: pointer; font-size: 0.9rem; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; border-radius: 4px; }
+        .btn-buscar { background: var(--dorado); color: white; }
+        .btn-verde { background: var(--verde-exito); color: white; }
+        .btn-rojo { background: var(--rojo-error); color: white; }
+
+        .regalos { background: #fdfaf6; padding: 30px 20px; margin-top: 40px; }
+        .cbu-box { background: white; border: 2px dashed var(--dorado); padding: 20px; font-size: 0.85rem; }
+        
+        .pie { font-size: 0.95rem; margin: 40px 0; padding: 0 15px; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="hero-image"></div>
+
+<div class="card">
+    <h1>Ariel & Gisela</h1>
+    <div class="fecha-top">13 de Marzo de 2026</div>
+
+    <div class="contador-container">
+        <div class="contador-titulo">Faltan</div>
+        <div class="timer" id="timer">
+            <div class="time-box"><span id="days">0</span><label>Días</label></div>
+            <div class="time-box"><span id="hours">0</span><label>Horas</label></div>
+            <div class="time-box"><span id="minutes">0</span><label>Minutos</label></div>
+            <div class="time-box"><span id="seconds">0</span><label>Segundos</label></div>
+        </div>
+    </div>
+
+    <div class="info-boda">
+        <div class="info-item">
+            <span class="info-label">Ceremonia</span>
+            <span class="info-value">El Rosedal</span>
+            <span class="info-sub">Horario: 12:00 | Dirección: Isabel Infanta Av. 555</span>
+            <a href="https://maps.google.com/?q=El+Rosedal+Palermo" target="_blank" class="map-link">📍 Ver mapa</a>
+        </div>
+        <div class="info-item">
+            <span class="info-label">Celebración - Almuerzo</span>
+            <span class="info-value">Selquet</span>
+            <span class="info-sub">Horario: 13:00 | Dirección: Figueroa Alcorta 6402</span>
+            <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">📍 Ver mapa</a>
+        </div>
+        <div class="info-item"><span class="info-label">Dress Code</span><span class="info-value">Elegante</span></div>
+        <div class="info-item"><span class="info-label">Fecha del Evento</span><span class="info-value">13/03/2026</span></div>
+    </div>
+
+    <div class="confirmacion">
+        <p><strong>Buscá tu nombre y confirmá:</strong></p>
+        <div id="searchSection">
+            <input type="text" id="guestSearch" placeholder="Escribí tu nombre..." style="width:100%; padding:15px; margin-bottom:10px; text-align:center;">
+            <button class="btn-buscar" onclick="buscar()">Buscar</button>
+        </div>
+        <div id="resultsArea" class="hidden"><div id="listContainer"></div></div>
+        <div id="confirmacionArea" class="hidden">
+            <p>Hola <strong><span id="selectedName"></span></strong>,<br>¿cómo nos acompañarás?</p>
+            <button class="btn-verde" onclick="enviarRespuesta('civil')">Sólo al Civil</button>
+            <button class="btn-verde" onclick="enviarRespuesta('almuerzo')">Civil y Almuerzo</button>
+            <button class="btn-rojo" onclick="enviarRespuesta('no')">No asistiré</button>
+        </div>
+        <p id="msg" style="font-weight: bold; color: var(--dorado);"></p>
+    </div>
+
+    <div class="regalos">
+        <p><strong>Si desean hacernos un regalo:</strong></p>
+        <div class="cbu-box">
+            Santander Rio | CBU: 0720762688000001354490<br>
+            Alias: <strong>ESPADA.PALETA.LASTRE</strong>
+        </div>
+    </div>
+
+    <div class="pie">Para esta ocasión tan especial, hemos decidido celebrar en un ambiente sólo para adultos. Gracias por acompañarnos.</div>
+</div>
+
+<script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwPeVsvaAG5mpS7P5Jql1pjLn69acwRpStjJLsOIyHr7KZUKFo7hZezlnzui9pd3qPXOA/exec";
+    let nombreSeleccionado = "";
+
+    // LÓGICA CONTADOR
+    const target = new Date("March 13, 2026 12:00:00").getTime();
+    setInterval(() => {
+        const now = new Date().getTime();
+        const diff = target - now;
+        document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("minutes").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+    }, 1000);
+
+    async function buscar() {
+        const query = document.getElementById('guestSearch').value;
+        if(query.length < 3) return;
+        document.getElementById('msg').innerText = "Buscando...";
+        try {
+            const res = await fetch(`${WEB_APP_URL}?action=buscar&nombre=${encodeURIComponent(query)}`);
+            const data = await res.json();
+            const container = document.getElementById('listContainer');
+            container.innerHTML = "";
+            data.results.forEach(n => {
+                const d = document.createElement('div');
+                d.style.padding = "15px"; d.style.cursor = "pointer"; d.innerText = n;
+                d.onclick = () => {
+                    nombreSeleccionado = n;
+                    document.getElementById('selectedName').innerText = n;
+                    document.getElementById('resultsArea').classList.add('hidden');
+                    document.getElementById('confirmacionArea').classList.remove('hidden');
+                };
+                container.appendChild(d);
+            });
+            document.getElementById('resultsArea').classList.remove('hidden');
+            document.getElementById('msg').innerText = "";
+        } catch(e) { document.getElementById('msg').innerText = "Error."; }
+    }
+
+    async function enviarRespuesta(opcion) {
+        document.getElementById('msg').innerText = "Guardando...";
+        try {
+            await fetch(`${WEB_APP_URL}?action=confirmar&nombre=${encodeURIComponent(nombreSeleccionado)}&opcion=${opcion}`);
+            document.getElementById('confirmacionArea').classList.add('hidden');
+            document.getElementById('msg').innerText = "¡Confirmado!";
+        } catch(e) { document.getElementById('msg').innerText = "Error."; }
+    }
+</script>
+</body>
+</html>
