@@ -10,11 +10,10 @@
         * { box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; text-align: center; color: var(--texto); margin: 0; padding: 0; background-color: var(--fondo-gris); }
 
-        /* Mantiene la proporci車n 3:4 de tu foto vertical sin cortes */
         .hero-image {
             width: 100%;
             aspect-ratio: 3 / 4; 
-            background-image: url('foto-casamiento2.jpg'); 
+            background-image: url('https://i.postimg.cc/J0RtnTGp/foto-casamiento3.jpg'); 
             background-size: contain; 
             background-position: center top;
             background-repeat: no-repeat;
@@ -25,7 +24,6 @@
         h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin: 0; }
         .fecha-top { font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; font-size: 0.9rem; color: #999; }
         
-        /* Secci車n de texto e historia */
         .seccion-texto { margin: 25px 0; padding: 0 10px; }
         .historia { font-style: italic; color: #777; margin: 20px 0; font-size: 0.95rem; line-height: 1.6; }
 
@@ -139,23 +137,21 @@
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwPeVsvaAG5mpS7P5Jql1pjLn69acwRpStjJLsOIyHr7KZUKFo7hZezlnzui9pd3qPXOA/exec";
     let nombreSeleccionado = "";
 
-    // --- L車GICA DE M迆SICA REFORZADA PARA ANDROID ---
     const audio = document.getElementById("miMusica");
     const musicBtn = document.getElementById("musicBtn");
     const musicIcon = document.getElementById("musicIcon");
 
+    // L車GICA REFORZADA PARA ANDROID
     const iniciarMusica = () => {
         if (audio.paused) {
-            // Salto al segundo 45 solicitado
             if (audio.currentTime === 0) {
                 audio.currentTime = 45; 
             }
-            
             audio.play().then(() => {
                 removerListeners();
                 musicIcon.innerText = "??";
             }).catch(() => {
-                // El navegador bloque車 el intento autom芍tico, esperamos al siguiente toque
+                // Navegador bloque車 el intento, esperamos al siguiente toque
             });
         }
     };
@@ -166,7 +162,6 @@
         });
     };
 
-    // Escuchamos m迆ltiples eventos para asegurar la activaci車n en m車viles
     ['click', 'touchstart', 'touchmove', 'touchend', 'scroll'].forEach(event => {
         document.addEventListener(event, iniciarMusica);
     });
@@ -183,7 +178,6 @@
         }
     });
 
-    // CONTADOR
     const target = new Date("March 13, 2026 12:00:00").getTime();
     setInterval(() => {
         const now = new Date().getTime();
@@ -194,7 +188,6 @@
         document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
     }, 1000);
 
-    // B迆SQUEDA Y CONFIRMACI車N
     async function buscar() {
         const query = document.getElementById('guestSearch').value;
         if(query.length < 3) return;
