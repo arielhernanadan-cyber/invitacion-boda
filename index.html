@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invitaci贸n Ariel & Gisela</title>
+    <title>Invitación Ariel & Gisela</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --dorado: #b8926a; --texto: #5a5a5a; --fondo-gris: #f8f8f8; --verde-exito: #76a071; --rojo-error: #c06c6c; }
         * { box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; text-align: center; color: var(--texto); margin: 0; padding: 0; background-color: var(--fondo-gris); }
 
+        /* Mantiene la proporción 3:4 de tu foto vertical sin cortes */
         .hero-image {
             width: 100%;
             aspect-ratio: 3 / 4; 
-            background-image: url('https://i.postimg.cc/J0RtnTGp/foto-casamiento3.jpg'); 
+            background-image: url('foto-casamiento2.jpg'); 
             background-size: contain; 
             background-position: center top;
             background-repeat: no-repeat;
@@ -24,7 +25,7 @@
         h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin: 0; }
         .fecha-top { font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; font-size: 0.9rem; color: #999; }
         
-        /* Estilos para la secci贸n de texto restaurada */
+        /* Sección de texto e historia */
         .seccion-texto { margin: 25px 0; padding: 0 10px; }
         .historia { font-style: italic; color: #777; margin: 20px 0; font-size: 0.95rem; line-height: 1.6; }
 
@@ -67,7 +68,7 @@
 </audio>
 
 <button id="musicBtn" class="music-control">
-    <span id="musicIcon">馃幍</span>
+    <span id="musicIcon">??</span>
 </button>
 
 <div class="hero-image"></div>
@@ -78,7 +79,7 @@
     <div class="contador-container">
         <div class="contador-titulo">Faltan</div>
         <div class="timer">
-            <div class="time-box"><span id="days">0</span><label>D铆as</label></div>
+            <div class="time-box"><span id="days">0</span><label>Días</label></div>
             <div class="time-box"><span id="hours">0</span><label>Horas</label></div>
             <div class="time-box"><span id="minutes">0</span><label>Minutos</label></div>
             <div class="time-box"><span id="seconds">0</span><label>Segundos</label></div>
@@ -87,41 +88,42 @@
 
     <div class="seccion-texto">
         <p>Tenemos el gusto de compartir con ustedes este momento tan importante para nuestras vidas.</p>
-        <div class="historia">"Nuestra historia comenz贸 hace 6 a帽os. Un encuentro, muchas risas, viajes y la certeza de que el mejor destino es caminar la vida juntos."</div>
-        <p>Por eso, hoy elegimos dar un nuevo paso juntos.<br><strong>隆Nos casamos!</strong></p>
+        <div class="historia">"Nuestra historia comenzó hace 6 a?os. Un encuentro, muchas risas, viajes y la certeza de que el mejor destino es caminar la vida juntos."</div>
+        <p>Por eso, hoy elegimos dar un nuevo paso juntos.<br><strong>?Nos casamos!</strong></p>
     </div>
 
     <div class="info-boda">
         <div class="info-item">
             <span class="info-label">Ceremonia</span>
             <span class="info-value">El Rosedal</span>
-            <span class="info-sub">Horario: 12:00 | Direcci贸n: Isabel Infanta Av. 555</span>
-            <a href="https://maps.google.com/?q=El+Rosedal+Palermo" target="_blank" class="map-link">馃搷 Ver mapa</a>
+            <span class="info-sub">Horario: 12:00 | Dirección: Isabel Infanta Av. 555</span>
+            <a href="https://maps.google.com/?q=El+Rosedal+Palermo" target="_blank" class="map-link">?? Ver mapa</a>
         </div>
         <div class="info-item">
-            <span class="info-label">Celebraci贸n - Almuerzo</span>
+            <span class="info-label">Celebración - Almuerzo</span>
             <span class="info-value">Selquet</span>
-            <span class="info-sub">Horario: 13:00 | Direcci贸n: Figueroa Alcorta 6402</span>
-            <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">馃搷 Ver mapa</a>
+            <span class="info-sub">Horario: 13:00 | Dirección: Figueroa Alcorta 6402</span>
+            <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">?? Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Dress Code</span>
-            <span class="info-value">Elegante-Sport</span> </div>
+            <span class="info-value">Elegante-Sport</span> 
+        </div>
         <div class="info-item"><span class="info-label">Fecha del Evento</span><span class="info-value">13/03/2026</span></div>
     </div>
 
     <div class="confirmacion">
-        <p><strong>Busc谩 tu nombre y confirm谩:</strong></p>
+        <p><strong>Buscá tu nombre y confirmá:</strong></p>
         <div id="searchSection">
-            <input type="text" id="guestSearch" placeholder="Escrib铆 tu nombre..." style="width:100%; padding:15px; margin-bottom:10px; text-align:center;">
+            <input type="text" id="guestSearch" placeholder="Escribí tu nombre..." style="width:100%; padding:15px; margin-bottom:10px; text-align:center;">
             <button class="btn-buscar" onclick="buscar()">Buscar</button>
         </div>
         <div id="resultsArea" class="hidden"><div id="listContainer"></div></div>
         <div id="confirmacionArea" class="hidden">
-            <p>Hola <strong><span id="selectedName"></span></strong>,<br>驴c贸mo nos acompa帽ar谩s?</p>
-            <button class="btn-verde" onclick="enviarRespuesta('civil')">S贸lo al Civil</button>
+            <p>Hola <strong><span id="selectedName"></span></strong>,<br>?cómo nos acompa?arás?</p>
+            <button class="btn-verde" onclick="enviarRespuesta('civil')">Sólo al Civil</button>
             <button class="btn-verde" onclick="enviarRespuesta('almuerzo')">Civil y Almuerzo</button>
-            <button class="btn-rojo" onclick="enviarRespuesta('no')">No asistir茅</button>
+            <button class="btn-rojo" onclick="enviarRespuesta('no')">No asistiré</button>
         </div>
         <p id="msg" style="font-weight: bold; color: var(--dorado);"></p>
     </div>
@@ -130,42 +132,58 @@
         <p><strong>Si desean hacernos un regalo:</strong></p>
         <div class="cbu-box">Santander Rio | CBU: 0720762688000001354490<br>Alias: <strong>ESPADA.PALETA.LASTRE</strong></div>
     </div>
-    <div class="pie">Para esta ocasi贸n tan especial, hemos decidido celebrar en un ambiente s贸lo para adultos. Gracias por acompa帽arnos.</div>
+    <div class="pie">Para esta ocasión tan especial, hemos decidido celebrar en un ambiente sólo para adultos. Gracias por acompa?arnos.</div>
 </div>
 
 <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwPeVsvaAG5mpS7P5Jql1pjLn69acwRpStjJLsOIyHr7KZUKFo7hZezlnzui9pd3qPXOA/exec";
     let nombreSeleccionado = "";
 
+    // --- LóGICA DE MúSICA REFORZADA PARA ANDROID ---
     const audio = document.getElementById("miMusica");
     const musicBtn = document.getElementById("musicBtn");
     const musicIcon = document.getElementById("musicIcon");
 
-    const playAudio = () => {
+    const iniciarMusica = () => {
         if (audio.paused) {
-            // AJUSTE DE INICIO: Cambi谩 el 45 por el segundo que quieras
+            // Salto al segundo 45 solicitado
             if (audio.currentTime === 0) {
                 audio.currentTime = 45; 
             }
+            
             audio.play().then(() => {
-                musicIcon.innerText = "馃攪";
-            }).catch(() => {});
+                removerListeners();
+                musicIcon.innerText = "??";
+            }).catch(() => {
+                // El navegador bloqueó el intento automático, esperamos al siguiente toque
+            });
         }
     };
 
-    ['click', 'touchstart', 'scroll'].forEach(event => {
-        document.addEventListener(event, playAudio, { once: true });
+    const removerListeners = () => {
+        ['click', 'touchstart', 'touchmove', 'touchend', 'scroll'].forEach(event => {
+            document.removeEventListener(event, iniciarMusica);
+        });
+    };
+
+    // Escuchamos múltiples eventos para asegurar la activación en móviles
+    ['click', 'touchstart', 'touchmove', 'touchend', 'scroll'].forEach(event => {
+        document.addEventListener(event, iniciarMusica);
     });
 
     musicBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (audio.paused) {
-            audio.play(); musicIcon.innerText = "馃攪";
+            audio.play(); 
+            musicIcon.innerText = "??";
+            removerListeners();
         } else {
-            audio.pause(); musicIcon.innerText = "馃幍";
+            audio.pause(); 
+            musicIcon.innerText = "??";
         }
     });
 
+    // CONTADOR
     const target = new Date("March 13, 2026 12:00:00").getTime();
     setInterval(() => {
         const now = new Date().getTime();
@@ -176,6 +194,7 @@
         document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
     }, 1000);
 
+    // BúSQUEDA Y CONFIRMACIóN
     async function buscar() {
         const query = document.getElementById('guestSearch').value;
         if(query.length < 3) return;
@@ -206,7 +225,7 @@
         try {
             await fetch(`${WEB_APP_URL}?action=confirmar&nombre=${encodeURIComponent(nombreSeleccionado)}&opcion=${opcion}`);
             document.getElementById('confirmacionArea').classList.add('hidden');
-            document.getElementById('msg').innerText = "隆Confirmado!";
+            document.getElementById('msg').innerText = "?Confirmado!";
         } catch(e) { document.getElementById('msg').innerText = "Error."; }
     }
 </script>
