@@ -11,19 +11,21 @@
         body { font-family: 'Montserrat', sans-serif; text-align: center; color: var(--texto); margin: 0; padding: 0; background-color: var(--fondo-gris); }
 
         .hero-image {
-            width: 100%;
-            aspect-ratio: 3 / 4; 
-            background-image: url('https://i.postimg.cc/J0RtnTGp/foto-casamiento3.jpg'); 
-            background-size: contain; 
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-color: #fff;
-        }
+    width: 100%;
+    aspect-ratio: 3 / 4; 
+    /* Si el archivo en GitHub se llama foto-casamiento2.jpg, ponelo as¨ª: */
+    background-image: url('foto-casamiento2.jpg'); 
+    background-size: contain; 
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #fff;
+}
 
         .card { background-color: #fff; max-width: 600px; margin: -40px auto 20px; padding: 40px 15px; border-radius: 30px 30px 0 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; z-index: 10; }
         h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin: 0; }
         .fecha-top { font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; font-size: 0.9rem; color: #999; }
         
+        /* Estilos para la secci¨®n de texto restaurada */
         .seccion-texto { margin: 25px 0; padding: 0 10px; }
         .historia { font-style: italic; color: #777; margin: 20px 0; font-size: 0.95rem; line-height: 1.6; }
 
@@ -105,8 +107,7 @@
         </div>
         <div class="info-item">
             <span class="info-label">Dress Code</span>
-            <span class="info-value">Elegante-Sport</span> 
-        </div>
+            <span class="info-value">Elegante-Sport</span> </div>
         <div class="info-item"><span class="info-label">Fecha del Evento</span><span class="info-value">13/03/2026</span></div>
     </div>
 
@@ -141,40 +142,28 @@
     const musicBtn = document.getElementById("musicBtn");
     const musicIcon = document.getElementById("musicIcon");
 
-    // L¨®GICA REFORZADA PARA ANDROID
-    const iniciarMusica = () => {
+    const playAudio = () => {
         if (audio.paused) {
+            // AJUSTE DE INICIO: Cambi¨¢ el 45 por el segundo que quieras
             if (audio.currentTime === 0) {
                 audio.currentTime = 45; 
             }
             audio.play().then(() => {
-                removerListeners();
                 musicIcon.innerText = "??";
-            }).catch(() => {
-                // Navegador bloque¨® el intento, esperamos al siguiente toque
-            });
+            }).catch(() => {});
         }
     };
 
-    const removerListeners = () => {
-        ['click', 'touchstart', 'touchmove', 'touchend', 'scroll'].forEach(event => {
-            document.removeEventListener(event, iniciarMusica);
-        });
-    };
-
-    ['click', 'touchstart', 'touchmove', 'touchend', 'scroll'].forEach(event => {
-        document.addEventListener(event, iniciarMusica);
+    ['click', 'touchstart', 'scroll'].forEach(event => {
+        document.addEventListener(event, playAudio, { once: true });
     });
 
     musicBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (audio.paused) {
-            audio.play(); 
-            musicIcon.innerText = "??";
-            removerListeners();
+            audio.play(); musicIcon.innerText = "??";
         } else {
-            audio.pause(); 
-            musicIcon.innerText = "??";
+            audio.pause(); musicIcon.innerText = "??";
         }
     });
 
