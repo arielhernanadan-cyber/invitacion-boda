@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invitación Ariel & Gisela</title>
+    <title>Invitaci&oacute;n Ariel & Gisela</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --dorado: #b8926a; --texto: #5a5a5a; --fondo-gris: #f8f8f8; --verde-exito: #76a071; --rojo-error: #c06c6c; }
@@ -71,7 +71,7 @@
 
 <div class="hero-image"></div>
 <div class="card">
-    <h1>Ariel & Gisela</h1>
+    <h1>Ariel &amp; Gisela</h1>
     <div class="fecha-top">13 de Marzo de 2026</div>
     
     <div class="contador-container">
@@ -141,37 +141,26 @@
     const musicBtn = document.getElementById("musicBtn");
     const musicIcon = document.getElementById("musicIcon");
 
-    // --- LÓGICA AGRESIVA PARA ANDROID ---
     const playAudio = () => {
         if (audio.paused) {
             if (audio.currentTime === 0) {
                 audio.currentTime = 45; 
             }
             audio.play().then(() => {
-                musicIcon.innerHTML = "&#128263;"; // Mute icon
-                removerListeners(); // Limpiamos para no procesar más
-            }).catch(() => {
-                // Si el navegador bloqueó el scroll, esperamos al siguiente toque
-            });
+                musicIcon.innerHTML = "&#128263;";
+            }).catch(() => {});
         }
     };
 
-    const removerListeners = () => {
-        ['pointerdown', 'touchstart', 'click'].forEach(event => {
-            document.removeEventListener(event, playAudio);
-        });
-    };
-
-    // Usamos pointerdown porque se dispara antes que el scroll
-    ['pointerdown', 'touchstart', 'click'].forEach(event => {
-        document.addEventListener(event, playAudio);
+    // Lógica original: funciona al tocar la pantalla
+    ['click', 'touchstart', 'scroll'].forEach(event => {
+        document.addEventListener(event, playAudio, { once: true });
     });
 
     musicBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (audio.paused) {
             audio.play(); musicIcon.innerHTML = "&#128263;";
-            removerListeners();
         } else {
             audio.pause(); musicIcon.innerHTML = "&#127925;";
         }
@@ -217,7 +206,7 @@
         try {
             await fetch(`${WEB_APP_URL}?action=confirmar&nombre=${encodeURIComponent(nombreSeleccionado)}&opcion=${opcion}`);
             document.getElementById('confirmacionArea').classList.add('hidden');
-            document.getElementById('msg').innerText = "&iexcl;Confirmado!";
+            document.getElementById('msg').innerText = "隆Confirmado!";
         } catch(e) { document.getElementById('msg').innerText = "Error."; }
     }
 </script>
