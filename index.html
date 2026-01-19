@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invitación Ariel & Gisela</title>
+    <title>Invitaci&oacute;n Ariel & Gisela</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --dorado: #b8926a; --texto: #5a5a5a; --fondo-gris: #f8f8f8; --verde-exito: #76a071; --rojo-error: #c06c6c; }
         * { box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; text-align: center; color: var(--texto); margin: 0; padding: 0; background-color: var(--fondo-gris); }
 
+        /* CAPA INVISIBLE PARA CAPTURAR EL PRIMER TOQUE EN ANDROID */
+        #ghost-trigger {
+            position: absolute; top: 0; left: 0; width: 100%; height: 90vh; 
+            z-index: 999; cursor: pointer;
+        }
+
         .hero-image {
-            width: 100%;
-            aspect-ratio: 3 / 4; 
-            /* RUTA LOCAL EN GITHUB */
+            width: 100%; aspect-ratio: 3 / 4; 
             background-image: url('foto-casamiento3.jpg'); 
-            background-size: contain; 
-            background-position: center top;
-            background-repeat: no-repeat;
-            background-color: #fff;
+            background-size: contain; background-position: center top;
+            background-repeat: no-repeat; background-color: #fff;
+            position: relative;
         }
 
         .card { background-color: #fff; max-width: 600px; margin: -40px auto 20px; padding: 40px 15px; border-radius: 30px 30px 0 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; z-index: 10; }
@@ -62,23 +65,25 @@
 </head>
 <body>
 
+<div id="ghost-trigger"></div>
+
 <audio id="miMusica" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <button id="musicBtn" class="music-control">
-    <span id="musicIcon">🎵</span>
+    <span id="musicIcon">&#127925;</span>
 </button>
 
 <div class="hero-image"></div>
 <div class="card">
-    <h1>Ariel & Gisela</h1>
+    <h1>Ariel &amp; Gisela</h1>
     <div class="fecha-top">13 de Marzo de 2026</div>
     
     <div class="contador-container">
         <div class="contador-titulo">Faltan</div>
         <div class="timer">
-            <div class="time-box"><span id="days">0</span><label>Días</label></div>
+            <div class="time-box"><span id="days">0</span><label>D&iacute;as</label></div>
             <div class="time-box"><span id="hours">0</span><label>Horas</label></div>
             <div class="time-box"><span id="minutes">0</span><label>Minutos</label></div>
             <div class="time-box"><span id="seconds">0</span><label>Segundos</label></div>
@@ -87,22 +92,22 @@
 
     <div class="seccion-texto">
         <p>Tenemos el gusto de compartir con ustedes este momento tan importante para nuestras vidas.</p>
-        <div class="historia">"Nuestra historia comenzó hace 6 años. Un encuentro, muchas risas, viajes y la certeza de que el mejor destino es caminar la vida juntos."</div>
-        <p>Por eso, hoy elegimos dar un nuevo paso juntos.<br><strong>¡Nos casamos!</strong></p>
+        <div class="historia">&quot;Nuestra historia comenz&oacute; hace 6 a&ntilde;os. Un encuentro, muchas risas, viajes y la certeza de que el mejor destino es caminar la vida juntos.&quot;</div>
+        <p>Por eso, hoy elegimos dar un nuevo paso juntos.<br><strong>&iexcl;Nos casamos!</strong></p>
     </div>
 
     <div class="info-boda">
         <div class="info-item">
             <span class="info-label">Ceremonia</span>
             <span class="info-value">El Rosedal</span>
-            <span class="info-sub">Horario: 12:00 | Dirección: Isabel Infanta Av. 555</span>
-            <a href="https://maps.google.com" target="_blank" class="map-link">📍 Ver mapa</a>
+            <span class="info-sub">Horario: 12:00 | Direcci&oacute;n: Isabel Infanta Av. 555</span>
+            <a href="https://maps.google.com/?q=El+Rosedal+Palermo" target="_blank" class="map-link">&#128205; Ver mapa</a>
         </div>
         <div class="info-item">
-            <span class="info-label">Celebración - Almuerzo</span>
+            <span class="info-label">Celebraci&oacute;n - Almuerzo</span>
             <span class="info-value">Selquet</span>
-            <span class="info-sub">Horario: 13:00 | Dirección: Figueroa Alcorta 6402</span>
-            <a href="https://maps.google.com" target="_blank" class="map-link">📍 Ver mapa</a>
+            <span class="info-sub">Horario: 13:00 | Direcci&oacute;n: Figueroa Alcorta 6402</span>
+            <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">&#128205; Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Dress Code</span>
@@ -112,17 +117,17 @@
     </div>
 
     <div class="confirmacion">
-        <p><strong>Buscá tu nombre y confirmá:</strong></p>
+        <p><strong>Busc&aacute; tu nombre y confirm&aacute;:</strong></p>
         <div id="searchSection">
-            <input type="text" id="guestSearch" placeholder="Escribí tu nombre..." style="width:100%; padding:15px; margin-bottom:10px; text-align:center;">
+            <input type="text" id="guestSearch" placeholder="Escrib&iacute; tu nombre..." style="width:100%; padding:15px; margin-bottom:10px; text-align:center;">
             <button class="btn-buscar" onclick="buscar()">Buscar</button>
         </div>
         <div id="resultsArea" class="hidden"><div id="listContainer"></div></div>
         <div id="confirmacionArea" class="hidden">
-            <p>Hola <strong><span id="selectedName"></span></strong>,<br>¿cómo nos acompañarás?</p>
-            <button class="btn-verde" onclick="enviarRespuesta('civil')">Sólo al Civil</button>
+            <p>Hola <strong><span id="selectedName"></span></strong>,<br>&iquest;c&oacute;mo nos acompa&ntilde;ar&aacute;s?</p>
+            <button class="btn-verde" onclick="enviarRespuesta('civil')">S&oacute;lo al Civil</button>
             <button class="btn-verde" onclick="enviarRespuesta('almuerzo')">Civil y Almuerzo</button>
-            <button class="btn-rojo" onclick="enviarRespuesta('no')">No asistiré</button>
+            <button class="btn-rojo" onclick="enviarRespuesta('no')">No asistir&eacute;</button>
         </div>
         <p id="msg" style="font-weight: bold; color: var(--dorado);"></p>
     </div>
@@ -131,7 +136,7 @@
         <p><strong>Si desean hacernos un regalo:</strong></p>
         <div class="cbu-box">Santander Rio | CBU: 0720762688000001354490<br>Alias: <strong>ESPADA.PALETA.LASTRE</strong></div>
     </div>
-    <div class="pie">Para esta ocasión tan especial, hemos decidido celebrar en un ambiente sólo para adultos. Gracias por acompañarnos.</div>
+    <div class="pie">Para esta ocasi&oacute;n tan especial, hemos decidido celebrar en un ambiente s&oacute;lo para adultos. Gracias por acompa&ntilde;arnos.</div>
 </div>
 
 <script>
@@ -141,44 +146,36 @@
     const audio = document.getElementById("miMusica");
     const musicBtn = document.getElementById("musicBtn");
     const musicIcon = document.getElementById("musicIcon");
+    const ghost = document.getElementById("ghost-trigger");
 
-    // LÓGICA DE ACTIVACIÓN AGRESIVA (Para que el primer toque inicie el audio)
-    const intentarReproducir = () => {
+    // L&Oacute;GICA DE ACTIVACI&Oacute;N POR "GHOST TOQUE"
+    const activarMusica = () => {
         if (audio.paused) {
-            if (audio.currentTime === 0) {
-                audio.currentTime = 45; 
-            }
-            
+            if (audio.currentTime === 0) { audio.currentTime = 45; }
             audio.play().then(() => {
-                musicIcon.innerHTML = "🔇";
-                removerListeners();
-            }).catch(() => {});
+                musicIcon.innerHTML = "&#128263;"; // Mute
+                ghost.remove(); // Limpiamos la capa una vez activada la m&uacute;sica
+            }).catch(() => {
+                // Si falla (scroll muy r&aacute;pido), la capa sigue ah&iacute; para el pr&oacute;ximo toque
+            });
         }
     };
 
-    const removerListeners = () => {
-        ['click', 'touchstart', 'pointerdown'].forEach(event => {
-            document.removeEventListener(event, intentarReproducir);
-        });
-    };
-
-    // Escuchamos el pointerdown: se dispara apenas apoyás el dedo para el scroll
-    ['click', 'touchstart', 'pointerdown'].forEach(event => {
-        document.addEventListener(event, intentarReproducir, { passive: true });
-    });
+    // Escuchamos el inicio del toque (que dispara el scroll en Android)
+    ghost.addEventListener("touchstart", activarMusica, { once: true });
+    ghost.addEventListener("mousedown", activarMusica, { once: true });
 
     musicBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (audio.paused) {
-            audio.play(); 
-            musicIcon.innerHTML = "🔇";
-            removerListeners();
+            audio.play(); musicIcon.innerHTML = "&#128263;";
+            if(ghost) ghost.remove();
         } else {
-            audio.pause(); 
-            musicIcon.innerHTML = "🎵";
+            audio.pause(); musicIcon.innerHTML = "&#127925;";
         }
     });
 
+    // CONTADOR
     const target = new Date("March 13, 2026 12:00:00").getTime();
     setInterval(() => {
         const now = new Date().getTime();
@@ -189,6 +186,7 @@
         document.getElementById("seconds").innerText = Math.floor((diff % (1000 * 60)) / 1000);
     }, 1000);
 
+    // B&Uacute;SQUEDA
     async function buscar() {
         const query = document.getElementById('guestSearch').value;
         if(query.length < 3) return;
@@ -206,6 +204,7 @@
                     document.getElementById('selectedName').innerText = n;
                     document.getElementById('resultsArea').classList.add('hidden');
                     document.getElementById('confirmacionArea').classList.remove('hidden');
+                    activarMusica(); // Aseguramos activaci&oacute;n al elegir nombre
                 };
                 container.appendChild(d);
             });
@@ -219,7 +218,7 @@
         try {
             await fetch(`${WEB_APP_URL}?action=confirmar&nombre=${encodeURIComponent(nombreSeleccionado)}&opcion=${opcion}`);
             document.getElementById('confirmacionArea').classList.add('hidden');
-            document.getElementById('msg').innerText = "¡Confirmado!";
+            document.getElementById('msg').innerText = "隆Confirmado!";
         } catch(e) { document.getElementById('msg').innerText = "Error."; }
     }
 </script>
