@@ -11,21 +11,20 @@
         body { font-family: 'Montserrat', sans-serif; text-align: center; color: var(--texto); margin: 0; padding: 0; background-color: var(--fondo-gris); }
 
         .hero-image {
-    width: 100%;
-    aspect-ratio: 3 / 4; 
-    /* Si el archivo en GitHub se llama foto-casamiento2.jpg, ponelo as赤: */
-    background-image: url('foto-casamiento3.jpg'); 
-    background-size: contain; 
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-color: #fff;
-}
+            width: 100%;
+            aspect-ratio: 3 / 4; 
+            /* RUTA RELATIVA PARA GITHUB */
+            background-image: url('foto-casamiento3.jpg'); 
+            background-size: contain; 
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-color: #fff;
+        }
 
         .card { background-color: #fff; max-width: 600px; margin: -40px auto 20px; padding: 40px 15px; border-radius: 30px 30px 0 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; z-index: 10; }
         h1 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--dorado); margin: 0; }
         .fecha-top { font-weight: 300; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 30px; font-size: 0.9rem; color: #999; }
         
-        /* Estilos para la secci車n de texto restaurada */
         .seccion-texto { margin: 25px 0; padding: 0 10px; }
         .historia { font-style: italic; color: #777; margin: 20px 0; font-size: 0.95rem; line-height: 1.6; }
 
@@ -97,17 +96,18 @@
             <span class="info-label">Ceremonia</span>
             <span class="info-value">El Rosedal</span>
             <span class="info-sub">Horario: 12:00 | Direcci車n: Isabel Infanta Av. 555</span>
-            <a href="https://maps.google.com/?q=El+Rosedal+Palermo" target="_blank" class="map-link">?? Ver mapa</a>
+            <a href="https://maps.google.com" target="_blank" class="map-link">?? Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Celebraci車n - Almuerzo</span>
             <span class="info-value">Selquet</span>
             <span class="info-sub">Horario: 13:00 | Direcci車n: Figueroa Alcorta 6402</span>
-            <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">?? Ver mapa</a>
+            <a href="https://maps.google.com" target="_blank" class="map-link">?? Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Dress Code</span>
-            <span class="info-value">Elegante-Sport</span> </div>
+            <span class="info-value">Elegante-Sport</span> 
+        </div>
         <div class="info-item"><span class="info-label">Fecha del Evento</span><span class="info-value">13/03/2026</span></div>
     </div>
 
@@ -142,28 +142,38 @@
     const musicBtn = document.getElementById("musicBtn");
     const musicIcon = document.getElementById("musicIcon");
 
-    const playAudio = () => {
+    // --- L車GICA REFORZADA PARA ANDROID ---
+    const iniciarMusica = () => {
         if (audio.paused) {
-            // AJUSTE DE INICIO: Cambi芍 el 45 por el segundo que quieras
             if (audio.currentTime === 0) {
                 audio.currentTime = 45; 
             }
             audio.play().then(() => {
+                removerListeners();
                 musicIcon.innerText = "??";
             }).catch(() => {});
         }
     };
 
-    ['click', 'touchstart', 'scroll'].forEach(event => {
-        document.addEventListener(event, playAudio, { once: true });
+    const removerListeners = () => {
+        ['click', 'touchstart', 'touchmove', 'touchend', 'scroll'].forEach(event => {
+            document.removeEventListener(event, iniciarMusica);
+        });
+    };
+
+    ['click', 'touchstart', 'touchmove', 'touchend', 'scroll'].forEach(event => {
+        document.addEventListener(event, iniciarMusica);
     });
 
     musicBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (audio.paused) {
-            audio.play(); musicIcon.innerText = "??";
+            audio.play(); 
+            musicIcon.innerText = "??";
+            removerListeners();
         } else {
-            audio.pause(); musicIcon.innerText = "??";
+            audio.pause(); 
+            musicIcon.innerText = "??";
         }
     });
 
