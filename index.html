@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invitaci&oacute;n Ariel & Gisela</title>
+    <title>Invitación Ariel & Gisela</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --dorado: #b8926a; --texto: #5a5a5a; --fondo-gris: #f8f8f8; --verde-exito: #76a071; --rojo-error: #c06c6c; }
@@ -66,7 +66,7 @@
 </audio>
 
 <button id="musicBtn" class="music-control">
-    <span id="musicIcon">🎵</span>
+    <span id="musicIcon">&#127925;</span>
 </button>
 
 <div class="hero-image"></div>
@@ -86,7 +86,7 @@
 
     <div class="seccion-texto">
         <p>Tenemos el gusto de compartir con ustedes este momento tan importante para nuestras vidas.</p>
-        <div class="historia">&quot;Nuestra historia comenz&oacute; hace 6 a&ntilde;os. Un encuentro, muchas risas, viajes y la certeza de que el mejor destino es caminar la vida juntos.&quot;</div>
+        <div class="historia">"Nuestra historia comenz&oacute; hace 6 a&ntilde;os. Un encuentro, muchas risas, viajes y la certeza de que el mejor destino es caminar la vida juntos."</div>
         <p>Por eso, hoy elegimos dar un nuevo paso juntos.<br><strong>&iexcl;Nos casamos!</strong></p>
     </div>
 
@@ -95,13 +95,13 @@
             <span class="info-label">Ceremonia</span>
             <span class="info-value">El Rosedal</span>
             <span class="info-sub">Horario: 12:00 | Direcci&oacute;n: Isabel Infanta Av. 555</span>
-            <a href="https://maps.google.com/?q=El+Rosedal+Palermo" target="_blank" class="map-link">📍 Ver mapa</a>
+            <a href="https://maps.google.com/?q=El+Rosedal+Palermo" target="_blank" class="map-link">&#128205; Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Celebraci&oacute;n - Almuerzo</span>
             <span class="info-value">Selquet</span>
             <span class="info-sub">Horario: 13:00 | Direcci&oacute;n: Figueroa Alcorta 6402</span>
-            <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">📍 Ver mapa</a>
+            <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">&#128205; Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Dress Code</span>
@@ -141,37 +141,39 @@
     const musicBtn = document.getElementById("musicBtn");
     const musicIcon = document.getElementById("musicIcon");
 
-    const iniciarMusica = () => {
+    // --- LÓGICA AGRESIVA PARA ANDROID ---
+    const playAudio = () => {
         if (audio.paused) {
             if (audio.currentTime === 0) {
                 audio.currentTime = 45; 
             }
             audio.play().then(() => {
-                removerListeners();
-                musicIcon.innerText = "🔇";
-            }).catch(() => {});
+                musicIcon.innerHTML = "&#128263;"; // Mute icon
+                removerListeners(); // Limpiamos para no procesar más
+            }).catch(() => {
+                // Si el navegador bloqueó el scroll, esperamos al siguiente toque
+            });
         }
     };
 
     const removerListeners = () => {
-        ['click', 'touchstart', 'touchmove', 'touchend', 'scroll'].forEach(event => {
-            document.removeEventListener(event, iniciarMusica);
+        ['pointerdown', 'touchstart', 'click'].forEach(event => {
+            document.removeEventListener(event, playAudio);
         });
     };
 
-    ['click', 'touchstart', 'touchmove', 'touchend', 'scroll'].forEach(event => {
-        document.addEventListener(event, iniciarMusica);
+    // Usamos pointerdown porque se dispara antes que el scroll
+    ['pointerdown', 'touchstart', 'click'].forEach(event => {
+        document.addEventListener(event, playAudio);
     });
 
     musicBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (audio.paused) {
-            audio.play(); 
-            musicIcon.innerText = "🔇";
+            audio.play(); musicIcon.innerHTML = "&#128263;";
             removerListeners();
         } else {
-            audio.pause(); 
-            musicIcon.innerText = "🎵";
+            audio.pause(); musicIcon.innerHTML = "&#127925;";
         }
     });
 
