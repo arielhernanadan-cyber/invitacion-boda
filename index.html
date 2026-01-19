@@ -66,7 +66,7 @@
 </audio>
 
 <button id="musicBtn" class="music-control">
-    <span id="musicIcon">??</span>
+    <span id="musicIcon">🎵</span>
 </button>
 
 <div class="hero-image"></div>
@@ -95,13 +95,13 @@
             <span class="info-label">Ceremonia</span>
             <span class="info-value">El Rosedal</span>
             <span class="info-sub">Horario: 12:00 | Direcci&oacute;n: Isabel Infanta Av. 555</span>
-            <a href="https://maps.google.com/?q=El+Rosedal+Palermo" target="_blank" class="map-link">?? Ver mapa</a>
+            <a href="https://maps.google.com/?q=El+Rosedal+Palermo" target="_blank" class="map-link">📍 Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Celebraci&oacute;n - Almuerzo</span>
             <span class="info-value">Selquet</span>
             <span class="info-sub">Horario: 13:00 | Direcci&oacute;n: Figueroa Alcorta 6402</span>
-            <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">?? Ver mapa</a>
+            <a href="https://maps.google.com/?q=Selquet+Buenos+Aires" target="_blank" class="map-link">📍 Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Dress Code</span>
@@ -148,7 +148,7 @@
             }
             audio.play().then(() => {
                 removerListeners();
-                musicIcon.innerText = "??";
+                musicIcon.innerText = "🔇";
             }).catch(() => {});
         }
     };
@@ -167,11 +167,11 @@
         e.stopPropagation();
         if (audio.paused) {
             audio.play(); 
-            musicIcon.innerText = "??";
+            musicIcon.innerText = "🔇";
             removerListeners();
         } else {
             audio.pause(); 
-            musicIcon.innerText = "??";
+            musicIcon.innerText = "🎵";
         }
     });
 
