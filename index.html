@@ -10,18 +10,14 @@
         * { box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; text-align: center; color: var(--texto); margin: 0; padding: 0; background-color: var(--fondo-gris); }
 
-        /* CAPA GHOST: Captura el toque inicial para activar audio en Android */
-        #ghost-trigger {
-            position: absolute; top: 0; left: 0; width: 100%; height: 90vh; 
-            z-index: 999; cursor: pointer;
-        }
-
         .hero-image {
-            width: 100%; aspect-ratio: 3 / 4; 
+            width: 100%;
+            aspect-ratio: 3 / 4; 
             background-image: url('foto-casamiento3.jpg'); 
-            background-size: contain; background-position: center top;
-            background-repeat: no-repeat; background-color: #fff;
-            position: relative;
+            background-size: contain; 
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-color: #fff;
         }
 
         .card { background-color: #fff; max-width: 600px; margin: -40px auto 20px; padding: 40px 15px; border-radius: 30px 30px 0 0; box-shadow: 0 4px 15px rgba(0,0,0,0.05); position: relative; z-index: 10; }
@@ -39,6 +35,7 @@
         }
 
         .contador-container { margin: 20px 0; }
+        .contador-titulo { font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); }
         .timer { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
         .time-box { background: #fff; border: 1px solid #f0e6db; padding: 10px; min-width: 70px; border-radius: 10px; }
         .time-box span { display: block; font-size: 1.4rem; font-weight: 600; color: var(--dorado); }
@@ -47,17 +44,22 @@
         .info-boda { margin: 35px 0; border-top: 1px solid #f2f2f2; border-bottom: 1px solid #f2f2f2; padding: 25px 10px; }
         .info-item { margin-bottom: 30px; }
         .info-label { display: block; font-family: 'Great Vibes', cursive; font-size: 2.5rem; color: var(--dorado); line-height: 1.2; }
+        .info-value { display: block; font-weight: 600; font-size: 1.1rem; }
+        .info-sub { display: block; font-size: 0.9rem; }
         .map-link { display: inline-block; color: var(--dorado); text-decoration: none; font-size: 0.85rem; margin-top: 8px; border-bottom: 1px solid var(--dorado); font-weight: 600; }
 
         .confirmacion { border: 1px solid #e0c3a0; padding: 25px 15px; background: #fffdfb; }
         button { width: 100%; border: none; padding: 16px; cursor: pointer; font-size: 0.9rem; text-transform: uppercase; font-weight: 600; margin-bottom: 10px; border-radius: 4px; }
         .btn-buscar { background: var(--dorado); color: white; }
+        .btn-verde { background: var(--verde-exito); color: white; }
+        .btn-rojo { background: var(--rojo-error); color: white; }
+        .regalos { background: #fdfaf6; padding: 30px 20px; margin-top: 40px; }
+        .cbu-box { background: white; border: 2px dashed var(--dorado); padding: 20px; font-size: 0.85rem; }
+        .pie { font-size: 0.95rem; margin: 40px 0; padding: 0 15px; }
         .hidden { display: none; }
     </style>
 </head>
 <body>
-
-<div id="ghost-trigger"></div>
 
 <audio id="miMusica" loop preload="auto">
     <source src="musica.mp3" type="audio/mpeg">
@@ -73,7 +75,7 @@
     <div class="fecha-top">13 de Marzo de 2026</div>
     
     <div class="contador-container">
-        <div style="font-family:'Great Vibes'; font-size:2.5rem; color:var(--dorado);">Faltan</div>
+        <div class="contador-titulo">Faltan</div>
         <div class="timer">
             <div class="time-box"><span id="days">0</span><label>D&iacute;as</label></div>
             <div class="time-box"><span id="hours">0</span><label>Horas</label></div>
@@ -91,21 +93,21 @@
     <div class="info-boda">
         <div class="info-item">
             <span class="info-label">Ceremonia</span>
-            <span style="font-weight:600; font-size:1.1rem; display:block;">El Rosedal de Palermo</span>
-            <span style="font-size:0.9rem; display:block;">Horario: 12:00 | Direcci&oacute;n: Av. Infanta Isabel 555</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=El+Rosedal+de+Palermo" target="_blank" class="map-link">&#128205; Ver mapa</a>
+            <span class="info-value">El Rosedal de Palermo</span>
+            <span class="info-sub">Horario: 12:00 | Direcci&oacute;n: Av. Infanta Isabel 555</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Rosedal+de+Palermo" target="_blank" class="map-link">&#128205; Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Celebraci&oacute;n - Almuerzo</span>
-            <span style="font-weight:600; font-size:1.1rem; display:block;">Selquet</span>
-            <span style="font-size:0.9rem; display:block;">Horario: 13:00 | Direcci&oacute;n: Figueroa Alcorta 6402</span>
-            <a href="https://www.google.com/maps/search/?api=1&query=Selquet+Restaurant" target="_blank" class="map-link">&#128205; Ver mapa</a>
+            <span class="info-value">Selquet</span>
+            <span class="info-sub">Horario: 13:00 | Direcci&oacute;n: Figueroa Alcorta 6402</span>
+            <a href="https://www.google.com/maps/search/?api=1&query=Selquet+Figueroa+Alcorta" target="_blank" class="map-link">&#128205; Ver mapa</a>
         </div>
         <div class="info-item">
             <span class="info-label">Dress Code</span>
-            <span style="font-weight:600; font-size:1.1rem; display:block;">Elegante-Sport</span> 
+            <span class="info-value">Elegante-Sport</span> 
         </div>
-        <div class="info-item"><span class="info-label">Fecha del Evento</span><span style="font-weight:600; font-size:1.1rem; display:block;">13/03/2026</span></div>
+        <div class="info-item"><span class="info-label">Fecha del Evento</span><span class="info-value">13/03/2026</span></div>
     </div>
 
     <div class="confirmacion">
@@ -117,9 +119,9 @@
         <div id="resultsArea" class="hidden"><div id="listContainer"></div></div>
         <div id="confirmacionArea" class="hidden">
             <p>Hola <strong><span id="selectedName"></span></strong>,<br>&iquest;c&oacute;mo nos acompa&ntilde;ar&aacute;s?</p>
-            <button style="background:var(--verde-exito); color:white;" onclick="enviarRespuesta('civil')">S&oacute;lo al Civil</button>
-            <button style="background:var(--verde-exito); color:white;" onclick="enviarRespuesta('almuerzo')">Civil y Almuerzo</button>
-            <button style="background:var(--rojo-error); color:white;" onclick="enviarRespuesta('no')">No asistir&eacute;</button>
+            <button class="btn-verde" onclick="enviarRespuesta('civil')">S&oacute;lo al Civil</button>
+            <button class="btn-verde" onclick="enviarRespuesta('almuerzo')">Civil y Almuerzo</button>
+            <button class="btn-rojo" onclick="enviarRespuesta('no')">No asistir&eacute;</button>
         </div>
         <p id="msg" style="font-weight: bold; color: var(--dorado);"></p>
     </div>
@@ -128,7 +130,7 @@
         <p><strong>Si desean hacernos un regalo:</strong></p>
         <div class="cbu-box">Santander Rio | CBU: 0720762688000001354490<br>Alias: <strong>ESPADA.PALETA.LASTRE</strong></div>
     </div>
-    <div style="font-size:0.95rem; margin:40px 0; padding:0 15px;">Para esta ocasi&oacute;n tan especial, hemos decidido celebrar en un ambiente s&oacute;lo para adultos. Gracias por acompa&ntilde;arnos.</div>
+    <div class="pie">Para esta ocasi&oacute;n tan especial, hemos decidido celebrar en un ambiente s&oacute;lo para adultos. Gracias por acompa&ntilde;arnos.</div>
 </div>
 
 <script>
@@ -138,28 +140,40 @@
     const audio = document.getElementById("miMusica");
     const musicBtn = document.getElementById("musicBtn");
     const musicIcon = document.getElementById("musicIcon");
-    const ghost = document.getElementById("ghost-trigger");
 
-    const activarMusica = () => {
+    // L&Oacute;GICA DE ACTIVACI&Oacute;N QUE TE FUNCION&Oacute; BIEN
+    const intentarReproducir = () => {
         if (audio.paused) {
-            if (audio.currentTime === 0) { audio.currentTime = 45; }
+            if (audio.currentTime === 0) {
+                audio.currentTime = 45; 
+            }
             audio.play().then(() => {
-                musicIcon.innerHTML = "&#128263;"; 
-                if(ghost) ghost.remove();
+                musicIcon.innerHTML = "&#128263;";
+                removerListeners();
             }).catch(() => {});
         }
     };
 
-    ghost.addEventListener("touchstart", activarMusica, { once: true });
-    ghost.addEventListener("mousedown", activarMusica, { once: true });
+    const removerListeners = () => {
+        ['click', 'touchstart', 'pointerdown'].forEach(event => {
+            document.removeEventListener(event, intentarReproducir);
+        });
+    };
+
+    // Escuchamos los eventos que mencionaste para forzar el inicio
+    ['click', 'touchstart', 'pointerdown'].forEach(event => {
+        document.addEventListener(event, intentarReproducir, { passive: true });
+    });
 
     musicBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         if (audio.paused) {
-            audio.play(); musicIcon.innerHTML = "&#128263;";
-            if(ghost) ghost.remove();
+            audio.play(); 
+            musicIcon.innerHTML = "&#128263;";
+            removerListeners();
         } else {
-            audio.pause(); musicIcon.innerHTML = "&#127925;";
+            audio.pause(); 
+            musicIcon.innerHTML = "&#127925;";
         }
     });
 
@@ -190,7 +204,7 @@
                     document.getElementById('selectedName').innerText = n;
                     document.getElementById('resultsArea').classList.add('hidden');
                     document.getElementById('confirmacionArea').classList.remove('hidden');
-                    activarMusica();
+                    intentarReproducir(); // Tambi&eacute;n intentamos prender al elegir nombre
                 };
                 container.appendChild(d);
             });
